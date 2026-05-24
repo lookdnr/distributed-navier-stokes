@@ -7,3 +7,5 @@ solver-extension
 *.pdf
 Serial_Navier-Stokes.cpp
 plan.md
+.obj
+*.o
