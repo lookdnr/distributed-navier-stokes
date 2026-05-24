@@ -1,0 +1,8 @@
+*.out
+.vscode
+out/
+*.ipynb
+solver-core
+solver-extension
+*.pdf
+Serial_Navier-Stokes.cpp

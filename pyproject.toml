@@ -1,0 +1,24 @@
+[project]
+name = "cw-mpi"
+version = "0.1.0"
+description = "Postprocessing utilities and metadata for the CW-MPI solver"
+readme = "README.md"
+requires-python = ">=3.13"
+
+# Minimal runtime dependencies
+dependencies = [
+  "numpy>=1.20",
+  "matplotlib>=3.4",
+  "Pillow>=8.0",
+]
+
+[tool.setuptools]
+# Explicitly disable automatic package discovery for this repository layout
+# The repo contains multiple top-level folders (core, extension, out, assets)
+# and we do not intend to build them as Python packages. Setting `packages = []`
+# prevents setuptools from automatically finding top-level packages.
+packages = []
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"

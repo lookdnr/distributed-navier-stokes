@@ -1,0 +1,40 @@
+name: build with mpicxx
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: install MPI
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libopenmpi-dev openmpi-bin
+
+    - name: verify mpicxx
+      run: mpicxx --version
+
+    - name: compile
+      run: |
+        cd core
+        mpicxx -std=c++17 -O2 -o solver-core solver.cpp
+        
+        cd ../extension/
+        mpicxx -std=c++17 -O2 -o solver-ext solver.cpp
+
+    - name: check binary exists
+      run: |
+        cd core
+        ls -lh solver-core
+        file solver-core
+
+        cd ../extension
+        ls -lh solver-ext
+        file solver-ext
